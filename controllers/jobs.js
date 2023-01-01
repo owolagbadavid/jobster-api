@@ -108,7 +108,6 @@ const showStats = async (req, res) => {
     { $group: { _id: "$status", count: { $sum: 1 } } },
   ]);
 
-  console.log(stats);
 
   stats = stats.reduce((acc, curr) => {
     const { _id: title, count } = curr;
@@ -143,8 +142,7 @@ const showStats = async (req, res) => {
   }
 
   ).reverse();
-  console.log(monthlyApplications);
-
+ 
   res.status(StatusCodes.OK)
   .json({ defaultStats, monthlyApplications });
 };
